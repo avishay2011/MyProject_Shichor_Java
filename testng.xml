@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+    <class name="tests.Test_01_login"/>
+    <class name="tests.Test_02_Sanity"/>
+    <class name="tests.Test_03_ChangeLanguage"/>
+    <class name="tests.Test_04_SearchDestinationManually"/>
+    <class name="tests.Test_05_SelectDestination"/>
+    <class name="tests.Test_06_SelectDates"/>
+    <class name="tests.Test_07_InterestPoints_VisualTesting"/>
+    <class name="tests.Test_08_PassengerDetailsValidation"/>
+    <class name="tests.Test_09_SelectSeats"/>
+    <class name="tests.Test_10_Rest_Get_Request"/> 
+    <class name="tests.Test_11_SearchFlight"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

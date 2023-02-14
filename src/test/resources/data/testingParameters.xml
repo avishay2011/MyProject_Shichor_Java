@@ -1,0 +1,32 @@
+<Environment>
+Passenger Details
+<CityHebrew>פריז</CityHebrew>
+<CityEnglish>Paris</CityEnglish>
+<passenger_first_name>john</passenger_first_name>
+<passenger_family_name>lennon</passenger_family_name>
+<nationality>Israel</nationality>
+<gender>Male</gender>
+<birth_date_year>1985</birth_date_year>
+<birth_date_month>April</birth_date_month>
+<birth_date_day>28</birth_date_day>
+<PassportOrId>061204343</PassportOrId>
+<Expiration_date_year>2029</Expiration_date_year>
+<Expiration_date_month>April</Expiration_date_month>
+<Expiration_date_day>25</Expiration_date_day>
+<email>John1966@gmail.com</email>
+<phoneNumber>0522686656</phoneNumber>
+
+Search Destination 
+<destintation_for_Searching>buenos</destintation_for_Searching>
+Trip Dates
+<departureMonth>March</departureMonth>
+<departureDay>11</departureDay>
+<returnMonth>April</returnMonth>
+<returnDay>18</returnDay>
+Seats 
+<outBoundFlight_Row>10</outBoundFlight_Row>
+<outBoundFlight_LocationOnRow>D</outBoundFlight_LocationOnRow>
+<ReturnFlight_Row>16</ReturnFlight_Row>
+<ReturnFlight_LocationOnRow>E</ReturnFlight_LocationOnRow>
+
+</Environment>
