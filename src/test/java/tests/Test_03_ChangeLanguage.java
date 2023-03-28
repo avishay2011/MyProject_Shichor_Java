@@ -21,11 +21,11 @@ public class Test_03_ChangeLanguage extends BaseTest {
 	public  void test1_changeLanguage( )  {	 
 		MainPage MP=new MainPage(driver);
 		Sign_In_Page signIn=new Sign_In_Page(driver);
-		signIn.Click_X();
+		signIn.click_X();
 		MP.changeLanguage();
 		MP.printText(MP.getShichorSlogen());
 		String Expected="הרכיבו טיול בעצמכם";
-	 	Verifications.verifyTextInElememt(MP.getShichorSlogen(), Expected);
+	 	Verifications.verifyTextEquals(MP.getShichorSlogen(), Expected);
 }
 
 }

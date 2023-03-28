@@ -33,7 +33,7 @@ public class CreateTrip_Destination extends BasePage {
     }
     
     public void searchDestination(String cityForSearch) {
-	  hoverToElement(SearchField);
+	  hoverToElementAndClick(SearchField);
 	  hoverToElementAndFillText(SearchField,cityForSearch);
 	  wait(1000);
     }

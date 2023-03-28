@@ -107,30 +107,30 @@ public class Kiwi_SearchFlights_Engine extends BasePage{
 		moveToNewWindow();
 		click(AcceptCookies);
 	}
-	public void SearchButton() {
+	public void searchButton() {
 		click(SearchButton);
 	}
-	public void SortByPrice() {
+	public void sortByPrice() {
 		wait(5000);
 		click(SortByPrice);
 		js.executeScript("window.scrollBy(0,15000)", "");
 		wait(5000);
 	}
-	public void FilterPrice() {
+	public void filterPrice() {
 		waitUntil.until(ExpectedConditions.elementToBeClickable(FilterPriceButton));
 		click(FilterPriceButton);
-		hoverToElement(SlidePriceStart);
+		hoverToElementAndClick(SlidePriceStart);
 		action.dragAndDropBy(SlidePriceStart, 129, 0).build() .perform();
 		wait(5500);
 	}
 	
-	public void FilterByDuration() {
+	public void filterByDuration() {
 		click(FilterByDurationButton);
-		hoverToElement(SlideUpperDuration);
+		hoverToElementAndClick(SlideUpperDuration);
 		action.dragAndDropBy(SlideUpperDuration, -250, 0).build() .perform();	
 		wait(5000);	
 	}
-	public void FilterNonStop() {
+	public void filterNonStop() {
 		wait(7000);
 		js.executeScript("window.scrollBy(0,-500)", "");
 		waitUntil.until(ExpectedConditions.elementToBeClickable(radioButton_NonStop));
@@ -138,7 +138,7 @@ public class Kiwi_SearchFlights_Engine extends BasePage{
 		wait(3000);
 	}
 	
-	public void FilterByDepartureHour() {
+	public void filterByDepartureHour() {
 		click(clearStopsFilter);
 		click(openTimesFilter);
 		waitUntil.until(ExpectedConditions.elementToBeClickable(SlideMinDepartureHour));
@@ -148,9 +148,9 @@ public class Kiwi_SearchFlights_Engine extends BasePage{
 		wait(6500);
 	}
 	
-	public void FilterByArrivalHour() {
+	public void filterByArrivalHour() {
 		wait(7000);
-		hoverToElement(clearTimesFilter);
+		hoverToElementAndClick(clearTimesFilter);
 		waitUntil.until(ExpectedConditions.elementToBeClickable(SlideMinArrivalHour));
 		action.dragAndDropBy(SlideMinArrivalHour,   160, 0).build() .perform();
 		waitUntil.until(ExpectedConditions.visibilityOf(SlideMaxArrivalHour));
@@ -159,7 +159,7 @@ public class Kiwi_SearchFlights_Engine extends BasePage{
 		
 	}
 	
-	public void FilterByAirlineCompany(String carrier1) {
+	public void filterByAirlineCompany(String carrier1) {
 		waitUntil.until(ExpectedConditions.elementToBeClickable(cancelSuggestion));
 		js.executeScript("window.scrollBy(0,-650)", "");
 		wait(8000);

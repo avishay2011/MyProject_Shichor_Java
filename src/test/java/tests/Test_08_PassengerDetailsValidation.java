@@ -54,7 +54,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
         TicketFare tf=new TicketFare(driver);
         Kiwi_Guarantee kg=new Kiwi_Guarantee(driver);
         Seating seating=new Seating(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ctDestination.startPlanning();
         ctDestination.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),UtilsReadingFromXML_File.getData("CityHebrew")); 
@@ -84,7 +84,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     	pd.clear(pd.getGivenName());
     	pd.Continue();
     	pd.printText(pd.getGivenName_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getGivenName_errorMessage(), "Required field");  	
+     	Verifications.verifyTextEquals(pd.getGivenName_errorMessage(), "Required field");  	
     }
     @Test(priority =4 )
     public void Test4_givenName_Not_Latin_Characters() {
@@ -92,7 +92,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     	pd.fillText(pd.getGivenName(), "ישראל");
     	pd.Continue();
     	pd.printText(pd.getGivenName_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getGivenName_errorMessage(), "Use Latin characters only.");  
+     	Verifications.verifyTextEquals(pd.getGivenName_errorMessage(), "Use Latin characters only.");  
      	pd.clear(pd.getGivenName());
     	pd.fillText(pd.getGivenName(), "Avishay");
     }
@@ -102,7 +102,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     	pd.clear(pd.getSurName());
     	pd.Continue();
     	pd.printText(pd.getSurName_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getSurName_errorMessage(), "Required field"); 	
+     	Verifications.verifyTextEquals(pd.getSurName_errorMessage(), "Required field"); 	
      	
     }
     @Test(priority =6 )
@@ -111,7 +111,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     	pd.fillText(pd.getSurName(), "ישראלי");
     	pd.Continue();
     	pd.printText(pd.getSurName_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getSurName_errorMessage(), "Use Latin characters only.");  
+     	Verifications.verifyTextEquals(pd.getSurName_errorMessage(), "Use Latin characters only.");  
      	pd.clear(pd.getSurName());
     	pd.fillText(pd.getSurName(), "avraham");
     }
@@ -121,7 +121,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
    	    pd.clear(pd.getPassportOrIdNumber());
    	    pd.Continue();
         pd.printText(pd.getPassport_Or_Id_Num_errorMessage());
-        Verifications.verifyTextInElememt(pd.getPassport_Or_Id_Num_errorMessage(), "Required field"); 	
+        Verifications.verifyTextEquals(pd.getPassport_Or_Id_Num_errorMessage(), "Required field"); 	
    }
     
    @Test(priority =8 )
@@ -130,7 +130,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
        pd.fillText(pd.getPassportOrIdNumber(), "123456789101234567891");
        pd.Continue();
        pd.printText(pd.getPassport_Or_Id_Num_errorMessage());
-       Verifications.verifyTextInElememt(pd.getPassport_Or_Id_Num_errorMessage(), "Your passport/ID number must be 20 characters or less.");  
+       Verifications.verifyTextEquals(pd.getPassport_Or_Id_Num_errorMessage(), "Your passport/ID number must be 20 characters or less.");  
        pd.clear(pd.getPassportOrIdNumber());
        pd.fillText(pd.getPassportOrIdNumber(), "061204343");
     }
@@ -141,7 +141,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
        pd.clear(pd.getDateOFBirth_Day());
        pd.Continue();
        pd.printText(pd.getDateOfBirth_errorMessage());
-       Verifications.verifyTextInElememt(pd.getDateOfBirth_errorMessage(), "Required field"); 
+       Verifications.verifyTextEquals(pd.getDateOfBirth_errorMessage(), "Required field"); 
      	
     }
     
@@ -151,7 +151,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
       pd.fillText(pd.getDateOFBirth_Day(), "32");
       pd.Continue();
    	  pd.printText(pd.getDateOfBirth_errorMessage());
-      Verifications.verifyTextInElememt(pd.getDateOfBirth_errorMessage(), "Day must be in the range 1 – 30.");  
+      Verifications.verifyTextEquals(pd.getDateOfBirth_errorMessage(), "Day must be in the range 1 – 30.");  
       pd.clear(pd.getDateOFBirth_Day());
    	  pd.fillText(pd.getDateOFBirth_Day(), "25");
     	
@@ -163,7 +163,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
       pd.fillText(pd.getDateOfBirthYear(), "2024");
       pd.Continue();
    	  pd.printText(pd.getDateOfBirth_errorMessage());
-      Verifications.verifyTextInElememt(pd.getDateOfBirth_errorMessage(), "Year must be in the range 1900 – 2022.");  
+      Verifications.verifyTextEquals(pd.getDateOfBirth_errorMessage(), "Year must be in the range 1900 – 2023.");  
       pd.clear(pd.getDateOfBirthYear());
    	  pd.fillText(pd.getDateOfBirthYear(), "2000"); 	
   }
@@ -174,7 +174,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
       pd.clear(pd.getExpirationDate_Day());
       pd.Continue();
       pd.printText(pd.getExpirationDate_errorMessage());
-      Verifications.verifyTextInElememt(pd.getExpirationDate_errorMessage(), "Required field");
+      Verifications.verifyTextEquals(pd.getExpirationDate_errorMessage(), "Required field");
   } 
   
   @Test(priority =14 )
@@ -183,7 +183,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
      pd.fillText(pd.getExpirationDate_Day(), "32");
      pd.Continue();
   	 pd.printText(pd.getExpirationDate_errorMessage());
-     Verifications.verifyTextInElememt(pd.getExpirationDate_errorMessage(), "Day must be in the range 1 – 30.");  
+     Verifications.verifyTextEquals(pd.getExpirationDate_errorMessage(), "Day must be in the range 1 – 30.");  
      pd.clear(pd.getExpirationDate_Day());
   	 pd.fillText(pd.getExpirationDate_Day(), "25");
    	
@@ -196,7 +196,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
       pd.fillText(pd.getExpirationDate_Year(), "2021");
       pd.Continue();
    	  pd.printText(pd.getExpirationDate_errorMessage());
-      Verifications.verifyTextInElememt(pd.getExpirationDate_errorMessage(), "Year must be in the range 2022 – 2100.");  
+      Verifications.verifyTextEquals(pd.getExpirationDate_errorMessage(), "Year must be in the range 2023 – 2100.");  
       pd.clear(pd.getExpirationDate_Year());
    	  pd.fillText(pd.getExpirationDate_Year(), "2025"); 	
   }
@@ -206,10 +206,11 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     @Test(priority =16 )
     public void Test15_email_missing() throws InterruptedException {
     	PassengerDetails pd=new PassengerDetails(driver); 	
+    	pd.checkBoxes();
     	pd.clear(pd.getEmail());
     	pd.Continue();
     	pd.printText(pd.getEmail_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getEmail_errorMessage(), "Required for your tickets");
+     	Verifications.verifyTextEquals(pd.getEmail_errorMessage(), "Required for your tickets");
     }
    @Test(priority =17 )
    public void Test16_email_wrongFormat() {
@@ -217,7 +218,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
    	   pd.fillText(pd.getEmail(), "John1966gmail.com");
        pd.Continue();
    	   pd.printText(pd.getEmail_errorMessage());
-       Verifications.verifyTextInElememt(pd.getEmail_errorMessage(), "Please use this format: your@email.com");  
+       Verifications.verifyTextEquals(pd.getEmail_errorMessage(), "Please use this format: your@email.com");  
        pd.clear(pd.getEmail());
    	   pd.fillText(pd.getEmail(), "John1966@gmail.com");
    }
@@ -229,7 +230,7 @@ public class Test_08_PassengerDetailsValidation extends BaseTest
     	pd.clear(pd.getPhone());
     	pd.Continue();
     	pd.printText(pd.getPhone_errorMessage());
-     	Verifications.verifyTextInElememt(pd.getPhone_errorMessage(), "Required field");
+     	Verifications.verifyTextEquals(pd.getPhone_errorMessage(), "Required field");
     }   
     
 }

@@ -2,6 +2,7 @@ package pageObjects;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,8 +67,16 @@ public class PassengerDetails extends BasePage {
          private WebElement email_errorMessage;
     @FindBy(css="div[aria-live=\"polite\"]>div:nth-child(2)")
          private WebElement Phone_errorMessage;
+    @FindBy(css=".InsuranceToggleStatus__Container-sc-vh3ag8-0 a")
+         private WebElement ChangeInsuranceButton;
+    @FindBy(css=".Stack__StyledStack-sc-53pobq-0.eyCPcO>div:nth-child(1)")
+         private WebElement TravelPlus;
+    @FindBy(css=".Stack__StyledStack-sc-53pobq-0.eyCPcO>div:nth-child(2)")
+         private WebElement TravelBasic;
+    @FindBy(css=".ReservationBill-items>div:nth-child(2) p")
+         private WebElement TravelInsuranceBill;
 
-    public WebElement getGivenName_errorMessage() {
+	public WebElement getGivenName_errorMessage() {
 		return GivenName_errorMessage;
 	}
 	public WebElement getSurName_errorMessage() {
@@ -134,6 +143,9 @@ public class PassengerDetails extends BasePage {
 	public WebElement getPassportOrIdNumber() {
 		return passportOrIdNumber;
 	}
+	public WebElement getTravelInsuranceBill() {
+		return TravelInsuranceBill;
+	}
 	
 	public void fillName(String FirstName,String FamilyName) {
 		fillText(GivenName, FirstName);
@@ -173,4 +185,13 @@ public class PassengerDetails extends BasePage {
 	public void Continue() {
 		click(Continue);
 	}	
+	
+	public void selectTravelBasic() {
+		hoverToElementAndClick(TravelBasic);
+	}
+	public void selectTravelPlus() {
+		click(ChangeInsuranceButton);
+		hoverToElementAndClick(TravelPlus);
+	}
+	
 }

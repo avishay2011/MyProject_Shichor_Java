@@ -11,13 +11,13 @@ public class Kiwi_Guarantee extends BasePage {
         	super(driver);
 	}
 	
-	@FindBy (css =".ZKJdy:nth-child(2)>div>div:nth-child(1)")
-            private WebElement GuaranteeTransferProtection;	
+	@FindBy (css =".Radio__StyledIconContainer-sc-1e6hy4x-1")
+            private WebElement TakeTheRisk;	
 	@FindBy(css="button[data-test=\"StepControls-AdditionalService-next\"]")
 	        private WebElement Continue;
 	
 	public void selectTransferProtection() {
-		click(GuaranteeTransferProtection);
+		click(TakeTheRisk);
 		click(Continue);
 	}
 	}

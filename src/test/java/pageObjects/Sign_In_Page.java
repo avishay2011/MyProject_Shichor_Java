@@ -28,7 +28,7 @@ public class Sign_In_Page extends BasePage {
 		return formError;
 	}
 
-	public void LogIn(String email,String password) {
+	public void logIn(String email,String password) {
 		this.email.sendKeys(Keys.CONTROL+"a");
 		this.email.sendKeys(Keys.BACK_SPACE);
 		fillText(this.email, email);
@@ -38,7 +38,7 @@ public class Sign_In_Page extends BasePage {
 		click(login);	
 	}
 	
-	public void Click_X() {
+	public void click_X() {
 		click(X_Button);
 	}
 }

@@ -33,7 +33,7 @@ public class MainPage extends BasePage{
 		return ShichorSlogen;
 	}
 
-    public void removePopup(){
+   public void removePopup(){
 	   click(X_Button); 
    }
    public void changeLanguage() {

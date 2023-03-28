@@ -50,7 +50,7 @@ public class Test_07_InterestPoints_VisualTesting extends BaseTest
         Kiwi_Guarantee kg=new Kiwi_Guarantee(driver);
         Seating seating=new Seating(driver);
         screen = new Screen();
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ct.startPlanning();
         ct.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),UtilsReadingFromXML_File.getData("CityHebrew")); 
@@ -65,7 +65,7 @@ public class Test_07_InterestPoints_VisualTesting extends BaseTest
     @Test (dataProvider = "getParameters") 
     public void Test2_ViewInterestPointsOnMap(String interestPlaceIcon,String interestPlaceReview) throws FindFailed {   
       	TripOverviewPage tov=new TripOverviewPage(driver);    
-        tov.TestInterestPlaces(interestPlaceIcon,interestPlaceReview);
+        tov.testInterestPlaces(interestPlaceIcon,interestPlaceReview);
     }
     
    @DataProvider

@@ -35,13 +35,13 @@ public class Test_05_SelectDestination extends BaseTest{
         TicketFare tf=new TicketFare(driver);
         Kiwi_Guarantee kg=new Kiwi_Guarantee(driver);
         Seating seating=new Seating(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ct.startPlanning();
         ct.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),UtilsReadingFromXML_File.getData("CityHebrew")); 
         ctDates.flexibleDates();
         tov.cancelPopup();
-        Verifications.verifyTextInElememt(tov.getWhere(), UtilsReadingFromXML_File.getData("CityEnglish"));  
+        Verifications.verifyTextEquals(tov.getWhere(), UtilsReadingFromXML_File.getData("CityEnglish"));  
 	}	
 	
 	@Test

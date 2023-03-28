@@ -41,7 +41,7 @@ public class BasePage {
 	}
 
 	
-///	String main=driver.getWindowHandle(); /// Main page of shichor   מקבל את העמוד הראשי של שיחור 
+///	String main=driver.getWindowHandle(); /// Main page of shichor   - gt the main page of Shichor 
 	public void moveToNewWindow() {
     Set<String> list=driver.getWindowHandles();                                 /// Move to the new window that opens 
     for (String win: list) {
@@ -96,7 +96,7 @@ public class BasePage {
 
 	public void printText(WebElement el) {
 		waitUntil.until(ExpectedConditions.visibilityOf(el));
-		System.out.println(GetText(el));
+		System.out.println(getText(el));
 	}
 
 	public void wait(int miliseconds) {
@@ -108,7 +108,7 @@ public class BasePage {
 	
 	
 	
-	public void hoverToElement(WebElement el) {
+	public void hoverToElementAndClick(WebElement el) {
 		waitUntil.until(ExpectedConditions.visibilityOf(el));
 		action.moveToElement(el).click().build().perform();
 		wait(1500);
@@ -135,7 +135,7 @@ public class BasePage {
 		screen.dragDrop(path + drag, path + drop );
 	}
 	
-	public String GetText(WebElement el) {
+	public String getText(WebElement el) {
 		waitUntil.until(ExpectedConditions.visibilityOf(el));
 		return el.getText();
 	}

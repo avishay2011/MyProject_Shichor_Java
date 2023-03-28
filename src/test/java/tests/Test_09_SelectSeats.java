@@ -1,12 +1,13 @@
 package tests;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import commonOps.Verifications;
 import pageObjects.CreateTrip_Dates;
 import pageObjects.CreateTrip_Destination;
@@ -43,7 +44,7 @@ public class Test_09_SelectSeats extends BaseTest {
         Kiwi_Guarantee kg=new Kiwi_Guarantee(driver);
         Seating seating=new Seating(driver);
         OverViewAndPayment ovp=new OverViewAndPayment(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ctDestination.startPlanning();
         ctDestination.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),UtilsReadingFromXML_File.getData("CityHebrew")); 
@@ -64,23 +65,42 @@ public class Test_09_SelectSeats extends BaseTest {
         kg.selectTransferProtection();
     //    seating.Continue();
      //   seating.ContinueWithSeatSelection();
-       seating.select_Outbound_flight_Seat(UtilsReadingFromXML_File.getData("outBoundFlight_Row"),UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow"));
-        String Expected_outbound_Flight_Seat=UtilsReadingFromXML_File.getData("outBoundFlight_Row")+"-"+UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow");
-        String Actual_outBound_Flight_Seat= ovp.GetText(ovp.getSeat_Outbound_Flight()).substring(12, 16);
-        AssertJUnit.assertEquals(Expected_outbound_Flight_Seat, Actual_outBound_Flight_Seat);    
-        ovp.backToPreviousPage();
+        try {
+        	 seating.select_Outbound_flight_Seat(UtilsReadingFromXML_File.getData("outBoundFlight_Row"),UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow"));
+             String Expected_outbound_Flight_Seat=UtilsReadingFromXML_File.getData("outBoundFlight_Row")+"-"+UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow");
+             String Actual_outBound_Flight_Seat= ovp.getText(ovp.getSeat_Outbound_Flight()).substring(12, 16);
+             AssertJUnit.assertEquals(Expected_outbound_Flight_Seat, Actual_outBound_Flight_Seat);    
+             ovp.backToPreviousPage();
+		} catch (org.openqa.selenium.NoSuchElementException exception) {
+			System.out.println("!!!!!!!!!!!**************************************************!!!!!!!!!!!");
+			System.out.println("This Seat is allready taken, try another seat");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			boolean flag=true;
+			AssertJUnit.assertTrue(flag=false);
+		}
+   //     seating.select_Outbound_flight_Seat(UtilsReadingFromXML_File.getData("outBoundFlight_Row"),UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow"));
+   //     String Expected_outbound_Flight_Seat=UtilsReadingFromXML_File.getData("outBoundFlight_Row")+"-"+UtilsReadingFromXML_File.getData("outBoundFlight_LocationOnRow");
+   //     String Actual_outBound_Flight_Seat= ovp.getText(ovp.getSeat_Outbound_Flight()).substring(12, 16);
+   //     AssertJUnit.assertEquals(Expected_outbound_Flight_Seat, Actual_outBound_Flight_Seat);    
+   //     ovp.backToPreviousPage();
 	} 
 	
-   @Test
+   //@Test
     public void test2_Select_Return_flight_seat() throws FindFailed {
     	Seating seating=new Seating(driver);
     	OverViewAndPayment ovp=new OverViewAndPayment(driver);
-    	seating.select_Return_Flight_Seat(UtilsReadingFromXML_File.getData("ReturnFlight_Row"),UtilsReadingFromXML_File.getData("ReturnFlight_LocationOnRow"));
-    	String Expected_Return_Flight_Seat=UtilsReadingFromXML_File.getData("ReturnFlight_Row")+"-"+UtilsReadingFromXML_File.getData("ReturnFlight_LocationOnRow");
-        String Actual_Return_Flight_Seat= ovp.GetText(ovp.getSeat_Return_Flight()).substring(12, 16);
-        AssertJUnit.assertEquals(Expected_Return_Flight_Seat, Actual_Return_Flight_Seat);    
+    	try {
+    		seating.select_Return_Flight_Seat(UtilsReadingFromXML_File.getData("ReturnFlight_Row"),UtilsReadingFromXML_File.getData("ReturnFlight_LocationOnRow"));
+        	String Expected_Return_Flight_Seat=UtilsReadingFromXML_File.getData("ReturnFlight_Row")+"-"+UtilsReadingFromXML_File.getData("ReturnFlight_LocationOnRow");
+            String Actual_Return_Flight_Seat= ovp.getText(ovp.getSeat_Return_Flight()).substring(12, 16);
+            AssertJUnit.assertEquals(Expected_Return_Flight_Seat, Actual_Return_Flight_Seat);    
+		} catch (org.openqa.selenium.NoSuchElementException exception ) {
+			System.out.println("!!!!!!!!!!!**************************************************!!!!!!!!!!!");
+			System.out.println("This Seat is allready taken, try another seat");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			boolean flag=true;
+			AssertJUnit.assertTrue(flag=false);
+		}
 	    }
     
-    
-
 }

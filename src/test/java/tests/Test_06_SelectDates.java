@@ -31,7 +31,7 @@ public class Test_06_SelectDates extends BaseTest{
         SearchFlight sf=new SearchFlight(driver);
         PassengerDetails pd=new PassengerDetails(driver);
         TicketFare tf=new TicketFare(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ctDestination.startPlanning();
         ctDestination.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),(UtilsReadingFromXML_File.getData("CityHebrew"))); 
@@ -45,6 +45,6 @@ public class Test_06_SelectDates extends BaseTest{
         String expected_Selected_Dates= departureDayExpected+" "+departureMonthExpected+" - "+LandingDayExpected+ " "+ LandingMonthExpected;
         tov.printText(tov.getSelectedDates());
         System.out.println(expected_Selected_Dates);      
-        Verifications.verifyTextInElememt(tov.getSelectedDates(), expected_Selected_Dates);
+        Verifications.verifyTextEquals(tov.getSelectedDates(), expected_Selected_Dates);
 	}
 }

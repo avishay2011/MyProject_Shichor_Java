@@ -11,7 +11,7 @@ import org.testng.AssertJUnit;
 import org.testng.asserts.SoftAssert;
 
 public class Verifications {
-	public static void verifyTextInElememt(WebElement el,String Expected ) {
+	public static void verifyTextEquals(WebElement el,String Expected ) {
 	AssertJUnit.assertEquals(el.getText(), Expected);    
     }
 	

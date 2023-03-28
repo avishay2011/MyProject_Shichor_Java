@@ -36,7 +36,7 @@ public class Test_02_Sanity extends BaseTest {
         TicketFare tf=new TicketFare(driver);
         Kiwi_Guarantee kg=new Kiwi_Guarantee(driver);
         Seating seating=new Seating(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));
         MP.startPlanning();
         ctDestination.startPlanning();
         ctDestination.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),UtilsReadingFromXML_File.getData("CityHebrew")); 

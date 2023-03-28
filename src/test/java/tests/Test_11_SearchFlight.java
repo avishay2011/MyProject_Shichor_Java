@@ -45,7 +45,7 @@ public class Test_11_SearchFlight extends BaseTest {
 		Kiwi_Guarantee kg = new Kiwi_Guarantee(driver);
 		Seating seating = new Seating(driver);
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		signIn.LogIn(UtilsConfiguration.readProperty("email"), UtilsConfiguration.readProperty("password"));
+		signIn.logIn(UtilsConfiguration.readProperty("email"), UtilsConfiguration.readProperty("password"));
 		MP.startPlanning();
 		ctDestination.startPlanning();
 		ctDestination.selectDestination(UtilsReadingFromXML_File.getData("CityEnglish"),
@@ -54,7 +54,7 @@ public class Test_11_SearchFlight extends BaseTest {
 		tov.cancelPopup();
 		tov.open_FlightsSearch_Engine();
 		ksf.acceptCookies();
-		ksf.SearchButton();
+		ksf.searchButton();
 		ksf.moveToNewWindow();
 		// String DefaulatTestURL=driver.getCurrentUrl();
 
@@ -63,7 +63,7 @@ public class Test_11_SearchFlight extends BaseTest {
 	@Test(priority = 2)
 	public void test2_Sort_Cheapest_First() throws InterruptedException {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		ksf.SortByPrice();
+		ksf.sortByPrice();
 		int i = 0;
 		for (WebElement el : ksf.getFlightPrice()) {
 			if (i < ksf.getFlightPrice().size() - 1) {
@@ -78,7 +78,7 @@ public class Test_11_SearchFlight extends BaseTest {
 	@Test(priority = 3)
 	public void test3_Filter_By_Price() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		ksf.FilterPrice();
+		ksf.filterPrice();
 		int i = 0;
 		for (WebElement el : ksf.getFlightPrice()) {
 			if (i < ksf.getFlightPrice().size() - 1) {
@@ -96,7 +96,7 @@ public class Test_11_SearchFlight extends BaseTest {
 	public void test4_Filter_By_MaxTravelTime() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
 		ksf.clearFilters();
-		ksf.FilterByDuration();
+		ksf.filterByDuration();
 		int Max_Flight_Duration = Integer.parseInt(ksf.getUpperDurationLimit().getText().substring(6, 7)) * 60;
 		int flight_Duration_in_Minutes = 0;
 		for (WebElement el : ksf.getFlightDuration()) {
@@ -116,9 +116,9 @@ public class Test_11_SearchFlight extends BaseTest {
 	public void test5_Filter_NonStop() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
 		ksf.clearFilters();
-		ksf.FilterNonStop();
+		ksf.filterNonStop();
 		for (WebElement el : ksf.getStops()) {
-			Verifications.verifyTextInElememt(el, "Direct");
+			Verifications.verifyTextEquals(el, "Direct");
 		}
 	}
 
@@ -129,7 +129,7 @@ public class Test_11_SearchFlight extends BaseTest {
 	@Test(priority = 6)
 	public void test6_Filter_By_departure_hour() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		ksf.FilterByDepartureHour();
+		ksf.filterByDepartureHour();
 		js.executeScript("window.scrollBy(0,15000)", "");
 		for (WebElement el : ksf.getDepartureHours()) {
 			java.sql.Timestamp ts = java.sql.Timestamp.valueOf("2000-01-01 " + (el.getText() + ":01"));
@@ -145,7 +145,7 @@ public class Test_11_SearchFlight extends BaseTest {
 	@Test(priority = 7)
 	public void test7_Filter_By_Arrival_Hour() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		ksf.FilterByArrivalHour();
+		ksf.filterByArrivalHour();
 		for (WebElement el : ksf.getArrivalHours()) {
 			java.sql.Timestamp ts = java.sql.Timestamp.valueOf("2000-01-01 " + (el.getText() + ":01"));
 			AssertJUnit.assertTrue("The Arrival hour is not in the required range",
@@ -160,6 +160,6 @@ public class Test_11_SearchFlight extends BaseTest {
 	@Test(priority = 8)
 	public void test8_Filter_By_Airline_company() {
 		Kiwi_SearchFlights_Engine ksf = new Kiwi_SearchFlights_Engine(driver);
-		ksf.FilterByAirlineCompany("easyJet");
+		ksf.filterByAirlineCompany("easyJet");
 	}
 }

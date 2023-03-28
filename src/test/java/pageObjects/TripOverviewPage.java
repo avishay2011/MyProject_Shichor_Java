@@ -36,18 +36,18 @@ public class TripOverviewPage extends BasePage {
 	}
 
 	public void cancelPopup() {
-		hoverToElement(desktopBar);
+		hoverToElementAndClick(desktopBar);
 	}
 	public void selectFlight() {
 		click(flightCard);
 	}	
 	public void open_FlightsSearch_Engine() {
-		hoverToElement(viewAllFlights);
+		hoverToElementAndClick(viewAllFlights);
 		js.executeScript("window.scrollBy(0,550)", "");
 		wait(5000);
 		click(viewAllFlights);
 	}
-	public void TestInterestPlaces(String InterestPlaceIcon,String InterestPlaceReview) throws FindFailed {
+	public void testInterestPlaces(String InterestPlaceIcon,String InterestPlaceReview) throws FindFailed {
 		clickOnImage(InterestPlaceIcon);
 		doesTheImageExist(InterestPlaceReview);
 	}	

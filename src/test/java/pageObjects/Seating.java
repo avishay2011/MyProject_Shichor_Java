@@ -20,7 +20,7 @@ public class Seating extends BasePage{
 
 	@FindBy(css=".ButtonPrimitive__StyledButtonPrimitive-sc-1lbd19y-0.jxYHvZ")
 	private WebElement skipSeatSelection;
-	@FindBy(css=".Stack__StyledStack-sc-53pobq-0.lkDEal")
+	@FindBy(css=".Stack__StyledStack-sc-53pobq-0.DESWL")
 	private List<WebElement> flight_To_Destination;
 	@FindBy(css="div[data-test=\"SeatingResponsiveSeat-1-A\"]")
 	private WebElement seat;
@@ -28,8 +28,10 @@ public class Seating extends BasePage{
 	private WebElement confirmSeat;
 	@FindBy(css="button[data-test=\"Seating-AccordionFooter-button-next\"]>div>div")
 	private WebElement nextSeat;
-	@FindBy(css="button[data-test=\"StepControls-SeatingStep-next\"]>div>div")
+	@FindBy(css="button[data-test=\"StepControls-AdditionalService-next-segment\"]>div>div")
 	private WebElement ContinueToNextPage;
+	@FindBy(css="button[data-test=\"StepControls-SeatingStep-next\"]>div>div")
+	private WebElement ContinueToPayment;
 	
 	public void select_Outbound_flight_Seat(String row, String locationOnRow) throws FindFailed {
 		wait(10000);
@@ -39,9 +41,10 @@ public class Seating extends BasePage{
 		screen.click(selectedSeat);
     	click(confirmSeat);
     	click(ContinueToNextPage);
+    	click(ContinueToPayment);
 	}
 	public void select_Return_Flight_Seat(String row, String locationOnRow) throws FindFailed {
-		click(nextSeat);
+	//	click(nextSeat);
 		highlightElement(flight_To_Destination.get(1).findElement(By.cssSelector("[data-test=\"SeatingDesktopSeat-"+row+"-"+locationOnRow+"\"]")));
 		wait(2000);
 		js.executeScript("window.scrollBy(0,1300)", "");

@@ -23,10 +23,10 @@ public class Test_01_login extends BaseTest {
 	@Test(dataProvider = "getData")
 	public  void test1_login_errorMessage1(String email,String password )  {	 
         Sign_In_Page signIn=new Sign_In_Page(driver);
-        signIn.LogIn(email,password);   
+        signIn.logIn(email,password);   
       //This String is used for check that we get the right message 
       	String expectedString = "Please enter a valid email address";
-      	Verifications.verifyTextInElememt(signIn.getFormError(), expectedString);
+      	Verifications.verifyTextEquals(signIn.getFormError(), expectedString);
 	}
 	@DataProvider
 	public Object[][] getData() {
@@ -42,7 +42,7 @@ public class Test_01_login extends BaseTest {
 	@Test
 	public void test2_SuccesfullyLogIn() {
 		Sign_In_Page signIn=new Sign_In_Page(driver);
-        signIn.LogIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));   
+        signIn.logIn(UtilsConfiguration.readProperty("email"),UtilsConfiguration.readProperty("password"));   
         
 	}
 }
